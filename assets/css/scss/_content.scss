@@ -1,0 +1,232 @@
+// Content
+
+body {
+	font-family: $bodyFont;
+	color: color(white);
+	font-size: 22px;
+	background: color(black);
+}
+
+.container {
+	position: relative;
+	width: 90%;
+	margin: 1em auto;
+}
+
+// Circles
+@mixin circle-styles { 
+	display: block;
+	position: relative;
+	width: 100%;
+	-webkit-border-radius: 50%;
+			border-radius: 50%;
+	overflow: hidden;
+	&::after {
+		display: block;
+		content: ''; 
+		padding-bottom: 100%;
+	}
+} 
+
+// Squares
+@mixin square-styles { 
+	display: block;
+	position: relative;
+	width: 100%;
+	-webkit-border-radius: 0;
+			border-radius: 0;
+	overflow: hidden;
+	&::after {
+		display: block;
+		content: ''; 
+		padding-bottom: 100%;
+	}
+} 
+
+// General Shape Row formatting
+.shape-row {
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	.contain {
+		display: flex;
+		width: 20%;
+		padding: 0.5em;
+		.shape {
+			cursor: pointer;
+			-webkit-opacity: 1;
+					opacity: 1;
+			@include animate-quick();
+		}
+		&.movable {
+			border: 1px solid red;
+		}
+		&.red {
+			.shape {
+				background-color: color(accent, red);
+			}
+			h2 {
+				color: color(accent, red);
+			}
+		}
+		&.green {
+			.shape {
+				background-color: color(accent, green);
+			}
+			h2 {
+				color: color(accent, green);
+			}
+		}
+		&.blue {
+			.shape {
+				background-color: color(accent, blue);
+			}
+			h2 {
+				color: color(accent, blue);
+			}
+		}
+		&.orange {
+			.shape {
+				background-color: color(accent, orange);
+			}
+			h2 {
+				color: color(accent, orange);
+			}
+		}
+		&.yellow {
+			.shape {
+				background-color: color(accent, yellow);
+			}
+			h2 {
+				color: color(accent, yellow);
+			}
+		}
+		h2 {
+			-webkit-opacity: 0;
+					opacity: 0;
+			@include animate-quick();
+		}
+		&:hover,
+		&:focus-visible {
+			> h2 {
+				-webkit-opacity: 1;
+						opacity: 1;
+			}	
+		}
+	}
+	&:hover,
+	&:focus-visible {
+		> *:not(:hover) {
+			-webkit-opacity: 0.5;
+					opacity: 0.5;
+		}
+	}
+	
+	
+	// Circle Row Specifinc Styling
+	&#circles {
+		margin-bottom: 0.5em;
+		.contain {
+			flex-direction: column;
+			.shape {
+				@include circle-styles();
+			}
+			h2 {
+				padding-top: 0.25em;
+				padding-bottom: 0;
+			}
+		}
+	}
+	
+	// Square Row Specifinc Styling
+	&#squares {
+		position: relative;
+		margin-bottom: 2em;
+		height: auto;
+		max-height: 0px;
+		-webkit-opacity: 0;
+				opacity: 0;
+		@include animate-medium();
+		overflow: hidden;
+		&.active {
+			max-height: 9999px;
+			-webkit-opacity: 1;
+					opacity: 1;
+		}
+		.contain {
+			flex-direction: column-reverse;
+			-webkit-opacity: 0;
+					opacity: 0;
+			pointer-events: none;
+			@include animate-medium();
+			.shape {
+				@include square-styles();
+				&.circle {
+					@include circle-styles();
+				}
+			}
+			h2 {
+				padding-top: 0;
+				padding-bottom: 0.25em;
+			}
+			&.active {
+				pointer-events: all;
+				-webkit-opacity: 1;
+						opacity: 1;
+			}
+		}
+		&:hover,
+		&:focus-visible {
+			> .active:not(:hover) {
+				-webkit-opacity: 0.5;
+						opacity: 0.5;
+			}
+		}
+	}
+}
+
+// Made with Section
+#made-with {
+	padding-bottom: 2em;
+	h2 {
+		padding: 0 0 0.25em 0;
+	}
+	ul {
+		display: flex;
+		list-style: none;
+		justify-content: center;
+		margin: 0;
+		padding: 0;
+		li {
+			margin: 0;
+			padding: 0 1em;
+			text-align: center;
+		}
+	}
+}
+
+// Resposive Adjustments 
+@media (max-width: bp(xs)) {
+	.shape-row {
+		.contain {
+			padding: 0.25em;
+		}
+	}
+}
+@media (max-width: bp(xxs)) {
+	body {
+		color: color(black);
+		background: color(white);
+	}
+	.container {
+		width: 95%;
+	}
+	.shape-row {
+		.contain.yellow {
+			h2 {
+				text-shadow: 1px 1px 1px #0000;
+				text-shadow: 1px 1px 1px rgba(0,0,0,0.15);
+			}
+		}
+	}
+}

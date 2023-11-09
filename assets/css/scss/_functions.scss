@@ -1,0 +1,20 @@
+/****************************************
+
+FUNCTIONS
+
+****************************************/
+
+// Fontsize Lookup Function
+@function fontsize($size) {
+	@return map-get($fontSizes, $size);
+}
+
+// Color Lookup Function
+@function color($color, $tone: "base") {
+	@return map-get(map-get($colors, $color), $tone);
+}
+
+// Breakpoint Lookup Function
+@function bp($break) {
+	@return map-get($breakPoints, $break);
+}

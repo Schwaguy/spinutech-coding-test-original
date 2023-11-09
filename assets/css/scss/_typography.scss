@@ -1,0 +1,89 @@
+/****************************************
+
+TYPOGRPAHY
+
+****************************************/
+
+// H1 headers
+@mixin h1-font-styles {
+	font-family: $headlineFont;
+	font-size: fontsize(h1);
+	color: color(white);
+	font-weight: 700;
+	text-align: center;
+	
+	@media (max-width: bp(md)) {
+		font-size: 2em;
+	}
+	
+	@media (max-width: bp(sm)) {
+		font-size: 1.75em;
+	}
+	
+	@media (max-width: bp(xs)) {
+		font-size: 1.5em;
+	}
+	
+	@media (max-width: bp(xxs)) {
+		font-size: 1.25em;
+		color: color(grey);
+	}
+	
+	@media (max-width: bp(xxs)) {
+		font-size: 1.15em;
+	}
+}
+h1 {
+	@include h1-font-styles();
+}
+
+// H2 headers
+@mixin h2-font-styles {
+	font-family: $headlineFont;
+	font-size: fontsize(h2);
+	text-align: center;
+	padding-top: 0.25em;
+	padding-bottom: 1em;
+	margin: 0;
+	
+	@media (max-width: bp(md)) {
+		font-size: 1.25em;
+	}
+	
+	@media (max-width: bp(sm)) {
+		font-size: 1em;
+	}
+	
+	@media (max-width: bp(xs)) {
+		font-size: 0.9em;
+	}
+	
+	@media (max-width: bp(xxs)) {
+		font-size: 0.85em;
+		color: color(grey);
+	}
+	
+	@media (max-width: bp(xxxs)) {
+		font-size: 0.75em;
+		color: color(grey);
+	}
+}
+h2 {
+	@include h2-font-styles();
+}
+
+// Regular Text Formatting
+@mixin p-font-styles {
+	font-size: fontsize(p);
+	color: color(white);
+	line-height: 1.75rem;
+	
+	@media (max-width: bp(xxs)) {
+		color: color(grey);
+	}
+}
+p,
+ul,
+ol {
+	@include p-font-styles();
+}

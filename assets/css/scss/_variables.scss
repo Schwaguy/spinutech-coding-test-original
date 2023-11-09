@@ -1,0 +1,66 @@
+/****************************************
+
+VARIABLES
+
+****************************************/
+@import "_functions";
+
+// Animations
+@mixin animate-quick {
+	-webkit-transition: all 0.25s ease-in-out;
+	   -moz-transition: all 0.25s ease-in-out;
+		-ms-transition: all 0.25s ease-in-out;
+		 -o-transition: all 0.25s ease-in-out;
+			transition: all 0.25s ease-in-out;
+}
+@mixin animate-medium {
+	-webkit-transition: all 0.50s ease-in-out;
+	   -moz-transition: all 0.50s ease-in-out;
+		-ms-transition: all 0.50s ease-in-out;
+		 -o-transition: all 0.50s ease-in-out;
+			transition: all 0.50s ease-in-out;
+}
+
+// Font declarations
+$headlineFont: "Open Sans", sans-serif;
+$bodyFont: "Open Sans", sans-serif;
+
+// Font Sizes
+$fontSizes: (
+	h1: 2.5em,
+	h2: 1.5em,
+	p: 1em,
+);
+
+// Colors
+$colors: (
+	white: (
+		base: #fff
+	),
+	black: (
+		base: #000
+	),
+	grey: (
+		base: #312e2f
+	),
+	accent: (
+		base: #4c688e,
+		red: #ff0000,
+		green: #009900,
+		blue: #0000ff,
+		orange: #ff9900,
+		yellow: #ffff00
+	),
+);
+
+//break points
+$breakPoints: (
+	xxxs: 480px,
+	xxs: 567px,
+	xs: 666px,
+	sm: 767px,
+	md: 991px,
+	lg: 1200px,
+	xl: 1439px,
+	xxl: 1599px
+);
